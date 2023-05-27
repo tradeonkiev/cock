@@ -1,7 +1,11 @@
+// ignore_for_file: library_private_types_in_public_api, depend_on_referenced_packages
+
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ShopPage extends StatefulWidget {
+  const ShopPage({super.key});
+
 
 
   @override
@@ -62,35 +66,42 @@ class _ShopPageState extends State<ShopPage> {
     }
   }
 
-  void _goBack() {
-    Navigator.pop(context, _clicks);
-  }
-
   @override
   Widget build(BuildContext context) {
     return
       Container(
-        padding: EdgeInsets.all(10),
+        padding: const EdgeInsets.all(10),
         alignment: Alignment.center,
-        color: Color.fromRGBO(26, 44, 51, 1.0),
+        color: const Color.fromRGBO(26, 44, 51, 1.0),
         child:Column(
             children: [
               Container(
                 height: 100,
-                decoration: BoxDecoration(color: Color.fromRGBO(34, 63, 77, 1.0), borderRadius: BorderRadius.all(Radius.circular(30))),
+                decoration: const BoxDecoration(
+                    color: Color.fromRGBO(34, 63, 77, 1.0),
+                    borderRadius: BorderRadius.all(Radius.circular(20))
+                ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Text(
                       'x$_clickMultiplier',
-                      style: const TextStyle(fontSize: 48, fontWeight: FontWeight.bold, color: Colors.white),
+                      style: const TextStyle(
+                          fontSize: 48,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white),
                     ),
                     Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10), // Закругление углов кнопки// Рамка с белым цветом
+                            ),
+                          ),
                           onPressed: _buyClickMultiplier,
-                          child: Text('Buy Click Multiplier (+$_clickMultiplier)'),
+                          child: Text('Buy x${_clickMultiplier + 1} cookie multiplier'),
                         ),
                         Text(
                           'Cost: $_clickMultiplierCost clicks',
@@ -105,23 +116,34 @@ class _ShopPageState extends State<ShopPage> {
                   ],
                 ),
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               Container(
                 height: 100,
-                decoration: BoxDecoration(color: Color.fromRGBO(34, 63, 77, 1.0), borderRadius: BorderRadius.all(Radius.circular(20))),
+                decoration: const BoxDecoration(
+                    color: Color.fromRGBO(34, 63, 77, 1.0),
+                    borderRadius: BorderRadius.all(Radius.circular(20))
+                ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Text(
                       '+$_clickPlus',
-                      style: const TextStyle(fontSize: 48, fontWeight: FontWeight.bold, color: Colors.white),
+                      style: const TextStyle(
+                          fontSize: 48,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white),
                     ),
                     Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(7.5), // Закругление углов кнопки// Рамка с белым цветом
+                            ),
+                          ),
                           onPressed: _buyClickPlus,
-                          child: Text('Buy Click Multiplier (+${_clickPlus + 1})'),
+                          child: Text('Buy +${_clickPlus + 1} cookie plus bonus'),
                         ),
                         Text(
                           'Cost: $_clickPlusCost clicks',
@@ -139,18 +161,29 @@ class _ShopPageState extends State<ShopPage> {
               const SizedBox(height: 10),
               Container(
                 height: 100,
-                decoration: const BoxDecoration(color: Color.fromRGBO(34, 63, 77, 1.0), borderRadius: BorderRadius.all(Radius.circular(20))),
+                decoration: const BoxDecoration(
+                    color: Color.fromRGBO(34, 63, 77, 1.0),
+                    borderRadius: BorderRadius.all(Radius.circular(7.5))
+                ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Text(
                       'x$_clickMultiplier',
-                      style: const TextStyle(fontSize: 48, fontWeight: FontWeight.bold, color: Colors.white),
+                      style: const TextStyle(
+                          fontSize: 48,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white),
                     ),
                     Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(7.5), // Закругление углов кнопки// Рамка с белым цветом
+                            ),
+                          ),
                           onPressed: _buyClickMultiplier,
                           child: Text('Buy Click Multiplier (+$_clickMultiplier)'),
                         ),

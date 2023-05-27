@@ -43,7 +43,7 @@ class _HomePageState extends State<HomePage> {
         centerTitle: true,
         backgroundColor: const Color.fromRGBO(30, 52, 62, 1.0),
         title: const Text(
-            'сookie game',
+            'cookie game',
             style:
             TextStyle(
               color: Colors.white,
@@ -54,6 +54,7 @@ class _HomePageState extends State<HomePage> {
 
       bottomNavigationBar: CurvedNavigationBar(
         backgroundColor: const Color.fromRGBO(26, 44, 51, 1.0),
+        buttonBackgroundColor: Colors.blue,
         color: const Color.fromRGBO(30, 52, 62, 1.0),
         animationDuration: const Duration(milliseconds: 300),
         index: _currentIndex,
@@ -61,12 +62,13 @@ class _HomePageState extends State<HomePage> {
           Icon(
             Icons.cookie,
             size: 30,
-            color: Colors.blue,
+            color: Color.fromRGBO(138, 177, 189, 1.0),
+
           ),
           Icon(
               Icons.shopping_cart,
               size: 30,
-              color: Colors.blue,
+              color: Color.fromRGBO(138, 177, 189, 1.0),
           ),
         ],
         onTap: (index) {

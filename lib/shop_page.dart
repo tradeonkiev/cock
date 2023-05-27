@@ -65,6 +65,16 @@ class _ShopPageState extends State<ShopPage> {
       _save();
     }
   }
+  void _resetCounter() {
+    setState(() {
+      _clicks = 0;
+      _clickPlus = 0;
+      _clickPlusCost = 10;
+      _clickMultiplier = 1;
+      _clickMultiplierCost = 10;
+    });
+    _save();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -101,7 +111,7 @@ class _ShopPageState extends State<ShopPage> {
                             ),
                           ),
                           onPressed: _buyClickMultiplier,
-                          child: Text('Buy x${_clickMultiplier + 1} cookie multiplier'),
+                          child: Text('Buy x${_clickMultiplier + 2} cookie multiplier'),
                         ),
                         Text(
                           'Cost: $_clickMultiplierCost clicks',
@@ -160,44 +170,69 @@ class _ShopPageState extends State<ShopPage> {
               ),
               const SizedBox(height: 10),
               Container(
+                width: MediaQuery.of(context).size.width,
                 height: 100,
                 decoration: const BoxDecoration(
                     color: Color.fromRGBO(34, 63, 77, 1.0),
-                    borderRadius: BorderRadius.all(Radius.circular(7.5))
+                    borderRadius: BorderRadius.all(Radius.circular(20))
                 ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Text(
-                      'x$_clickMultiplier',
-                      style: const TextStyle(
-                          fontSize: 48,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white),
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
                     ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(7.5), // Закругление углов кнопки// Рамка с белым цветом
+                  ),
+                  onPressed: () {
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return AlertDialog(
+                          backgroundColor: const Color.fromRGBO(34, 63, 77, 1.0),
+                          titleTextStyle: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 25,
+                            fontWeight: FontWeight.w900,
+                          ),
+                          shape: const RoundedRectangleBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                          ),
+                          title: const Text('Подтверждение'),
+                          content: const Text(
+                              'Вы уверены, что хотите продолжить?',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 20,
+                                fontWeight: FontWeight.w400,
+                              ),
+                          ),
+                          actions: [
+                            TextButton(
+                              child: const Text('Нет'),
+                              onPressed: () {
+                                Navigator.of(context).pop(false);
+                              },
                             ),
-                          ),
-                          onPressed: _buyClickMultiplier,
-                          child: Text('Buy Click Multiplier (+$_clickMultiplier)'),
-                        ),
-                        Text(
-                          'Cost: $_clickMultiplierCost clicks',
-                          style: const TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w500,
-                              color: Color.fromRGBO(131, 168, 183, 1.0),
-                          ),
-                        ),
-                      ],
+                            TextButton(
+                              child: Text('Да'),
+                              onPressed: () {
+                                _resetCounter();
+                                Navigator.of(context).pop(true);
+                              },
+                            ),
+                          ],
+                        );
+                      },
+                    );
+                  },
+                  child: const Text(
+                    "RESET SCORE",
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w900,
+                      fontSize: 20
+
                     ),
-                  ],
+                  ),
                 ),
               ),
             ],

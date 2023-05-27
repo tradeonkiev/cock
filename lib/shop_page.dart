@@ -48,7 +48,7 @@ class _ShopPageState extends State<ShopPage> {
     if (_clicks >= _clickMultiplierCost) {
       setState(() {
         _clicks -= _clickMultiplierCost;
-        _clickMultiplier++;
+        _clickMultiplier += 2;
         _clickMultiplierCost *= 5;
       });
       _save();

@@ -18,6 +18,7 @@ class _ShopPageState extends State<ShopPage> {
   int _clickMultiplierCost = 10;
   int _clickPlusCost = 10;
   int _clicks = 0;
+
   @override
   void initState() {
     super.initState();
@@ -32,6 +33,7 @@ class _ShopPageState extends State<ShopPage> {
       _clickMultiplierCost = prefs.getInt('clickMultiplierCost') ?? 10;
       _clickPlusCost = prefs.getInt('clickPlusCost') ?? 10;
       _clicks = prefs.getInt('counter') ?? 0;
+
     });
   }
 
@@ -42,6 +44,7 @@ class _ShopPageState extends State<ShopPage> {
     prefs.setInt('clickMultiplierCost', _clickMultiplierCost);
     prefs.setInt('clickPlusCost', _clickPlusCost);
     prefs.setInt('counter', _clicks);
+
   }
 
   void _buyClickMultiplier() {
@@ -178,6 +181,7 @@ class _ShopPageState extends State<ShopPage> {
                 ),
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color.fromRGBO(34, 63, 77, 1.0),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(20),
                     ),
@@ -213,7 +217,7 @@ class _ShopPageState extends State<ShopPage> {
                               },
                             ),
                             TextButton(
-                              child: Text('Да'),
+                              child: const Text('Да'),
                               onPressed: () {
                                 _resetCounter();
                                 Navigator.of(context).pop(true);
@@ -224,13 +228,13 @@ class _ShopPageState extends State<ShopPage> {
                       },
                     );
                   },
-                  child: const Text(
+                  child:
+                  const Text(
                     "RESET SCORE",
                     style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.w900,
-                      fontSize: 20
-
+                        fontSize: 20
                     ),
                   ),
                 ),
